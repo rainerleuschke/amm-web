@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultContainer.vue renders correctly 1`] = `
+<div
+  class="app"
+>
+  <defaultheader-stub />
+   
+  <div
+    class="app-body"
+  >
+    <appsidebar-stub
+      fixed="true"
+    >
+      <sidebarheader-stub />
+       
+      <sidebarform-stub />
+       
+      <sidebarnav-stub
+        navitems="[object Object],[object Object],[object Object],[object Object]"
+      />
+       
+      <sidebarfooter-stub />
+       
+      <sidebarminimizer-stub />
+    </appsidebar-stub>
+     
+    <main
+      class="main"
+    >
+      <breadcrumb-stub
+        list=""
+      />
+       
+      <div
+        class="container-fluid"
+      >
+        <router-view-stub
+          name="default"
+        />
+      </div>
+    </main>
+     
+    <appaside-stub
+      display=""
+      fixed="true"
+      offcanvas="true"
+    >
+      <defaultaside-stub />
+    </appaside-stub>
+  </div>
+   
+  <defaultfooter-stub />
+</div>
+`;
