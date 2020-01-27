@@ -43,9 +43,6 @@ Vue.filter("formatTick", function (value) {
 
 Vue.mixin({
   methods: {
-    publishCommand(command) {
-
-    },
     loadState(scenarioName, e) {
       let actionCmd = "[SYS]LOAD_STATE:" + scenarioName.slice(0, -4);
       this.$http
@@ -194,6 +191,31 @@ Vue.mixin({
         .then(response => {
           this.$notify({
             message: "Performance assessment performed",
+            icon: "check",
+            horizontalAlign: "center",
+            verticalAlign: "top",
+            type: "success"
+          });
+        })
+        .catch(e => {
+          // this.errors.push(e);
+        });
+    },
+    publishCommand(payload) {
+      var postData = {
+        payload: payload
+      };
+      let axiosConfig = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*"
+        }
+      };
+      this.$http
+        .post(`execute`, postData, axiosConfig)
+        .then(response => {
+          this.$notify({
+            message: "Command performed",
             icon: "check",
             horizontalAlign: "center",
             verticalAlign: "top",
