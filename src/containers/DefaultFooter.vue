@@ -2,7 +2,7 @@
       <TheFooter>
         <div>
           <!--footer-->
-          <span class="ml-1">&copy; 2018 Vcom3D, Inc.</span>
+          <span class="ml-1">&copy; 2021 Vcom3D, Inc.</span>
         </div>
         <div class="ml-auto">
           <span class="mr-1">Powered by</span>

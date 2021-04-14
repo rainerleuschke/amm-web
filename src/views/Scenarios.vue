@@ -7,10 +7,16 @@
     <b-row v-for="scenario in stateData" :key="scenario.name">
       <b-col>
         <b-button size="lg" class="mr-1 bg-success" type="button" v-on:click="loadState(scenario.name)">
-          <i class="fa fa-play-circle-o"></i>
+          <i v-if="scenario.name.includes('xml')" class="fa fa-play-circle-o"></i>
+          <i v-else class="fa fa-play-circle"></i>
         </b-button>
-        {{ scenario.name }}
-        <small>last modified {{ scenario.description | formatDate }}</small>
+        <div v-if="scenario.name.includes('xml')">
+          Biogears: {{ scenario.name }}
+        </div>
+        <div v-else>
+          CAE: {{ scenario.name }}
+        </div>
+        <small>last modified {{ scenario.last_updated | formatDate }}</small>
       </b-col>
     </b-row>
 

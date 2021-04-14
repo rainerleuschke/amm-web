@@ -6,33 +6,16 @@
       <b-Tabs variant="pills">
         <b-Tab title="Generic" active>
           <b-button-group>
-            <b-Button @click="eventRecordModal = true" variant="info">Event Record</b-Button>
             <b-Button @click="physModModal = true" variant="success">Physiology Modification</b-Button>
             <b-Button @click="renderModModal = true" variant="warning">Render Modification</b-Button>
-            <b-Button @click="perfAssessmentModal = true" variant="danger">Performance Assessment</b-Button>
+<!--            <b-Button @click="perfAssessmentModal = true" variant="danger">Performance Assessment</b-Button>-->
             <b-Button @click="commandModal = true" variant="success">Command</b-Button>
           </b-button-group>
         </b-Tab>
-        <b-Tab title="Fluidics">
-          <b-button-group>
-            <b-Button variant="success" v-on:click="publishCommand('[SYS]START_FLUIDICS');">Start Fluidics</b-Button>
-            <b-Button variant="danger" v-on:click="publishCommand('[SYS]STOP_FLUIDICS');">Stop Fluidics</b-Button>
-          </b-button-group>
 
-
-          <b-button-group>
-            <b-Button variant="warning" v-on:click="publishCommand('[SYS]START_PURGE');">Start Purge</b-Button>
-            <b-Button variant="warning" v-on:click="publishCommand('[SYS]STOP_FLUIDICS');">Stop Purge</b-Button>
-          </b-button-group>
-        </b-Tab>
       </b-Tabs>
     </b-row>
 
-
-    <b-modal title="Event Record" v-model="eventRecordModal" @ok="eventRecordModal = false">
-
-
-    </b-modal>
 
     <b-modal title="Physiology Modification" v-model="physModModal" @ok="sendPhysModForm(); physModModal = false">
       <b-form id="physModForm">
@@ -66,10 +49,10 @@
 
     <b-modal title="Command" v-model="commandModal" @ok="sendCommandForm(); commandModal = false">
       <b-form id="commandForm">
-      <b-form-group>
-        <label for="command">Command</label>
-        <b-form-input type="text" id="command" placeholder="Enter command"></b-form-input>
-      </b-form-group>
+        <b-form-group>
+          <label for="command">Command</label>
+          <b-form-input type="text" id="command" placeholder="Enter command"></b-form-input>
+        </b-form-group>
       </b-form>
     </b-modal>
 
@@ -98,24 +81,24 @@
     methods: {
       sendPhysModForm() {
         const physModForm = document.getElementById('physModForm');
-        const typeInput  = physModForm.querySelector('input[id=type]');
+        const typeInput = physModForm.querySelector('input[id=type]');
         const payloadInput = physModForm.querySelector('input[id=payload]');
-        const type  = typeInput.value;
+        const type = typeInput.value;
         const payload = payloadInput.value;
         this.publishPhysiologyModification(type, '', '', payload);
       },
       sendRenderModForm() {
         const renderModForm = document.getElementById('renderModForm');
-        const typeInput  = renderModForm.querySelector('input[id=type]');
+        const typeInput = renderModForm.querySelector('input[id=type]');
         const payloadInput = renderModForm.querySelector('input[id=payload]');
-        const type  = typeInput.value;
+        const type = typeInput.value;
         const payload = payloadInput.value;
         this.publishRenderModification(type, '', '', payload);
       },
       sendCommandForm() {
         const commandForm = document.getElementById('commandForm');
-        const commandInput  = commandForm.querySelector('input[id=command]');
-        const command  = commandInput.value;
+        const commandInput = commandForm.querySelector('input[id=command]');
+        const command = commandInput.value;
         this.publishCommand(command);
       }
     }

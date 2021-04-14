@@ -90,14 +90,6 @@
           </b-col>
 
           <b-col>
-            <b-card class="bg-warning">
-              <p class="category">Pain</p>
-              <h4 class="title">
-                {{PAS}}
-              </h4>
-            </b-card>
-          </b-col>
-          <b-col>
             <b-card class="bg-danger">
               <p class="category">Blood Pressure</p>
               <h4 class="title">
