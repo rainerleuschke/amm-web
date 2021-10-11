@@ -1,21 +1,36 @@
 <template>
   <div class="animated fadeIn">
-    <h3>Actions</h3>
-
-    <b-row>
-      <b-Tabs variant="pills">
-        <b-Tab title="Generic" active>
+<!--    <h3>Actions</h3>  -->
+  <div>
+    <b-card-group deck>
+      <b-card
+        bg-variant="light"
+        border-variant="gray"
+        header="Fluidics Control"
+        class="text-center"
+      >
+	  <b-button-group v-for="action in actionCards" :key='action.title'>
+            <button :class="action.type" v-on:click="handleActionClick(action.title)">
+               <i :class="action.icon"></i>
+               {{action.title}}
+            </button>
+          </b-button-group>
+      </b-card>
+      <b-card
+	bg-variant="light"
+        border-variant="gray"
+	header="Generic Actions"
+	class="text-center"
+      >
           <b-button-group>
             <b-Button @click="physModModal = true" variant="success">Physiology Modification</b-Button>
             <b-Button @click="renderModModal = true" variant="warning">Render Modification</b-Button>
 <!--            <b-Button @click="perfAssessmentModal = true" variant="danger">Performance Assessment</b-Button>-->
             <b-Button @click="commandModal = true" variant="success">Command</b-Button>
           </b-button-group>
-        </b-Tab>
-
-      </b-Tabs>
-    </b-row>
-
+      </b-card>
+    </b-card-group>
+  </div>
 
     <b-modal title="Physiology Modification" v-model="physModModal" @ok="sendPhysModForm(); physModModal = false">
       <b-form id="physModForm">
@@ -75,7 +90,19 @@
         renderModModal: false,
         eventRecordModal: false,
         perfAssessmentModal: false,
-        commandModal: false
+        commandModal: false,
+	actionCards: [
+          {
+            type: "btn btn-success",
+            icon: "fa fa-play",
+            title: "Start"
+          },
+          {
+            type: "btn btn-danger",
+            icon: "fa fa-stop",
+            title: "Stop"
+          }
+        ]
       }
     },
     methods: {
@@ -100,6 +127,34 @@
         const commandInput = commandForm.querySelector('input[id=command]');
         const command = commandInput.value;
         this.publishCommand(command);
+      },
+      handleActionClick(command) {
+        var actionCmd;
+        switch (command.toLowerCase()) {
+          case "start":
+            actionCmd = "[SYS]START_FLUIDICS";
+            break;
+          case "stop":
+            actionCmd = "[SYS]STOP_FLUIDICS";
+            break;
+      }
+      if (actionCmd) {
+        var commandUrl = "command/" + actionCmd;
+        this.$http
+          .get(commandUrl)
+          .then(response => {
+              this.$notify({
+                message: "Action performed: " + command,
+                icon: "play_arrow",
+                horizontalAlign: "center",
+                verticalAlign: "top",
+                type: "info"
+              });
+          })
+          .catch(e => {
+            // this.errors.push(e)
+          });
+        }
       }
     }
   }

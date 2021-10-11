@@ -9,7 +9,7 @@ const Dashboard = () => import('@/views/Dashboard')
 const Actions = () => import('@/views/Actions')
 const Modules = () => import('@/views/Modules')
 const Scenarios = () => import('@/views/Scenarios')
-
+const Supervisor = () => import('@/views/Supervisor')
 
 Vue.use(Router)
 
@@ -40,7 +40,12 @@ function configRoutes() {
           path: 'modules',
           name: 'Modules',
           component: Modules,
-        }
+        },
+	{
+	  path: 'supervisor',
+	  name: 'Supervisor',
+	  component: Supervisor,
+	},
       ]
     },
   ]

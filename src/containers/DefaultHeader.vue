@@ -2,7 +2,7 @@
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
       <b-link class="navbar-brand" to="#">
-        <img class="navbar-brand-full" src="img/amm_logo.jpg" width="50" height="50" alt="AMM">AMM
+        <img class="navbar-brand-full" src="img/amm_logo.jpg" width="50" height="50" alt="AJAMS">AJAMS
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen=true />
       <b-navbar-nav class="d-md-down-none">

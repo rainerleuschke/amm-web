@@ -23,5 +23,10 @@ export default {
       url: '/modules',
       icon: 'icon-puzzle'
     },
+    {
+      name: 'Supervisor',
+      url: '/supervisor',
+      icon: 'fa fa-tasks'
+    },
   ]
 }
