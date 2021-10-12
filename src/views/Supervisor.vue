@@ -1,13 +1,19 @@
 <template>
   <div class="animated fadeIn">
-  <b-jumbotron >
+  <b-card header-tag="header" no-body>
     <!-- <template #header>Supervisor</template> -->
-    <template #lead>
-    <i class="fa fa-tasks"></i>
-    AMM process management
+    <template #header>
+    	<h5 class="mb-0"> <i class="fa fa-tasks"></i>
+    	AMM process management </h5>
     </template>
-    <iframe :src="source" width="100%" height="480" style="border:1px solid black;"></iframe>
-  </b-jumbotron>
+ 	<!-- <iframe :src="source" width="100%" height="480" style="border:1px solid gray;"></iframe> -->
+  <b-embed
+    type="iframe"
+    aspect="16by9"
+    :src="source"
+  ></b-embed>
+  </b-card>
+
   </div>
 </template>
 
