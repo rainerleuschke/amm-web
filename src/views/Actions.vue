@@ -188,19 +188,19 @@
             title: "Stop"
           }
         ],
-	airwayObstructionSeverity: 5,
+	airwayObstructionSeverity: 0.5,
 	severityOptions: [
 	{value: 0, text: '0'},
-	{value: 1, text: '1'},
-	{value: 2, text: '2'},
-	{value: 3, text: '3'},
-	{value: 4, text: '4'},
-	{value: 5, text: '5'},
-	{value: 6, text: '6'},
-	{value: 7, text: '7'},
-	{value: 8, text: '8'},
-	{value: 9, text: '9'},
-	{value: 10, text: '10'}
+	{value: 0.1, text: '0.1'},
+	{value: 0.2, text: '0.2'},
+	{value: 0.3, text: '0.3'},
+	{value: 0.4, text: '0.4'},
+	{value: 0.5, text: '0.5'},
+	{value: 0.6, text: '0.6'},
+	{value: 0.7, text: '0.7'},
+	{value: 0.8, text: '0.8'},
+	{value: 0.9, text: '0.9'},
+	{value: 1.0, text: '1.0'}
 	]
       }
     },
@@ -229,17 +229,22 @@
       },
 
       publishAirwayObstruction() {
-        const type = "biogears";
-        var payload = "XML placeholder";
-        this.publishPhysiologyModification(type, '', '', '');
-	this.$bvToast.toast(type, {
+         const type = "PhysiologyModification";
+	      var payload = '<?xml version="1.0" encoding="UTF-8"?>' +
+            '<PhysiologyModification type="AirwayObstruction">' +
+            '<Severity>' + this.airwayObstructionSeverity + '</Severity>' +
+            '</PhysiologyModification>';
+         this.publishPhysiologyModification(type, '', '', payload);
+
+         var toastText = payload;
+	      this.$bvToast.toast(toastText, {
                 title: `Physiology Modification performed: `,
                 toaster: 'b-toaster-bottom-right',
                 autoHideDelay: 5000,
                 variant: 'danger',
                 solid: true
             });
-	this.$refs.dropdown.hide(true)
+	      this.$refs.dropdown.hide(true)
       },
 
       handleActionClick(command) {

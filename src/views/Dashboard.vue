@@ -54,58 +54,76 @@
         </b-card>
       </b-col>
 
-      <b-col>
-        <b-row>
+      <b-col cols="4">
           <b-col>
-            <b-card class="bg-danger">
-
-
-              <p class="category">Heart Rate</p>
-              <h4 class="title">
-                {{HR}}
-              </h4>
-
-            </b-card>
-          </b-col>
-          <b-col>
-            <b-card class="bg-primary">
-
-              <p class="category">Breath Rate</p>
-              <h4 class="title">
-                {{BR}}
-                <small>bpm</small>
-              </h4>
-
-
-            </b-card>
-          </b-col>
-          <b-col>
-            <b-card class="bg-info">
-              <p class="category">SPO2</p>
-              <h4 class="title">
-                {{SPO2}}
-              </h4>
+            <b-card bg-variant="success">
+              <h5 class="category">
+                  <i class="fa fa-heartbeat"></i>
+                  Heart Rate
+              </h5>
+              <h2 class="title" style="text-align:center">
+                  <div class="xxxl"><strong>
+                     {{HR}}
+                  </strong></div>
+              </h2>
 
             </b-card>
           </b-col>
 
           <b-col>
-            <b-card class="bg-danger">
-              <p class="category">Blood Pressure</p>
-              <h4 class="title">
-                {{SYS}}
-                /
-                {{DIA}}
-              </h4>
+            <b-card bg-variant="warning">
+              <h5 class="category">
+                  <i class="fa fa-lungs"></i>
+                  SpO2
+              </h5>
+              <h2 class="title" style="text-align:center">
+                  <div class="xxxl"><strong>
+                     {{SPO2}}
+                  </strong></div>
+              </h2>
             </b-card>
           </b-col>
 
-        </b-row>
+          <b-col>
+            <b-card bg-variant="primary">
+              <h5 class="category">
+                  <i class="fa fa-user"></i>
+                  Breath Rate
+              </h5>
+              <h2 class="title" style="text-align:center">
+                  <div class="xxxl"><strong>
+                     {{BR}}
+                  </strong></div>
+                  <!-- <small>bpm</small> -->
+              </h2>
+            </b-card>
+          </b-col>
+
+          <b-col>
+            <b-card bg-variant="danger">
+              <h5 class="category">
+                  <i class="fa fa-tint"></i>
+                  Blood Pressure
+              </h5>
+              <h2 class="title" style="text-align:center">
+                  <div class="xxxl"><strong>
+                     {{SYS}} / {{DIA}}
+                  </strong></div>
+              </h2>
+            </b-card>
+          </b-col>
+
       </b-col>
     </b-row>
 
   </div>
 </template>
+
+<style>
+   div.xxxl {
+      font-size: 150%;
+   }
+</style>
 
 <script>
 
@@ -331,3 +349,4 @@
     }
   }
 </script>
+

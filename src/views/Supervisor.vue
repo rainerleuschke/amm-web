@@ -12,6 +12,7 @@
     aspect="16by9"
     :src="source"
   ></b-embed>
+  Source: {{ source }}
   </b-card>
 
   </div>
@@ -22,9 +23,17 @@
   export default {
     name: 'supervisor',
     data: () => ({
-	source: 'http://localhost:9009/'
+	source: 'http://amm-core:9009/',
     }),
-    icons: { freeSet }
+    icons: { freeSet },
+    created: function () {
+      this.init();
+    },
+    methods: {
+    	init: function () {
+	   this.source = "http://" + location.hostname + ":9009/"
+	}
+    }
   }
 </script>
 
