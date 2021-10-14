@@ -176,32 +176,32 @@
         eventRecordModal: false,
         perfAssessmentModal: false,
         commandModal: false,
-	actionCards: [
-          {
-            type: "btn btn-success",
-            icon: "fa fa-play",
-            title: "Start"
-          },
-          {
-            type: "btn btn-danger",
-            icon: "fa fa-stop",
-            title: "Stop"
-          }
+         actionCards: [
+            {
+               type: "btn btn-success",
+               icon: "fa fa-play",
+               title: "Start"
+            },
+            {
+               type: "btn btn-danger",
+               icon: "fa fa-stop",
+               title: "Stop"
+            }
         ],
-	airwayObstructionSeverity: 0.5,
-	severityOptions: [
-	{value: 0, text: '0'},
-	{value: 0.1, text: '0.1'},
-	{value: 0.2, text: '0.2'},
-	{value: 0.3, text: '0.3'},
-	{value: 0.4, text: '0.4'},
-	{value: 0.5, text: '0.5'},
-	{value: 0.6, text: '0.6'},
-	{value: 0.7, text: '0.7'},
-	{value: 0.8, text: '0.8'},
-	{value: 0.9, text: '0.9'},
-	{value: 1.0, text: '1.0'}
-	]
+      airwayObstructionSeverity: 0.5,
+	   severityOptions: [
+	      {value: 0, text: '0'},
+	      {value: 0.1, text: '0.1'},
+	      {value: 0.2, text: '0.2'},
+	      {value: 0.3, text: '0.3'},
+	      {value: 0.4, text: '0.4'},
+	      {value: 0.5, text: '0.5'},
+	      {value: 0.6, text: '0.6'},
+	      {value: 0.7, text: '0.7'},
+	      {value: 0.8, text: '0.8'},
+	      {value: 0.9, text: '0.9'},
+	      {value: 1.0, text: '1.0'}
+	   ]
       }
     },
     methods: {
@@ -248,111 +248,111 @@
       },
 
       handleActionClick(command) {
-        var actionCmd;
-	var physModType;
-	var rendModType;
-	var toastVariant;
-        switch (command.toLowerCase()) {
-          case "start":
+      var actionCmd;
+	   var physModType;
+	   var rendModType;
+      var toastVariant;
+      switch (command.toLowerCase()) {
+         case "start":
             actionCmd = "[SYS]START_FLUIDICS";
-	    toastVariant = 'success';
+	         toastVariant = 'success';
             break;
-          case "stop":
+         case "stop":
             actionCmd = "[SYS]STOP_FLUIDICS";
-	    toastVariant = 'danger';
+	         toastVariant = 'danger';
             break;
-	  case "pneumo_left_mild":
-	    physModType = "PNEUMOTHORAX_CLOSED_L_MILD";
-	    rendModType = physModType;
-	    break;
-          case "pneumo_left_moderate":
+	      case "pneumo_left_mild":
+	         physModType = "PNEUMOTHORAX_CLOSED_L_MILD";
+	         rendModType = physModType;
+	         break;
+         case "pneumo_left_moderate":
             physModType = "PNEUMOTHORAX_CLOSED_L_MODERATE";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-          case "pneumo_left_severe":
+         case "pneumo_left_severe":
             physModType = "PNEUMOTHORAX_CLOSED_L_SEVERE";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-          case "pneumo_right_mild":
+         case "pneumo_right_mild":
             physModType = "PNEUMOTHORAX_CLOSED_R_MILD";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-          case "pneumo_right_moderate":
+         case "pneumo_right_moderate":
             physModType = "PNEUMOTHORAX_CLOSED_R_MODERATE";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-          case "pneumo_right_severe":
+         case "pneumo_right_severe":
             physModType = "PNEUMOTHORAX_CLOSED_R_SEVERE";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-	  case "ncd_left_2nd":
-	    physModType = "NEEDLE_D_L";
-	    rendModType = physModType;
-	    break;
-          case "ncd_left_5th":
+	      case "ncd_left_2nd":
+	         physModType = "NEEDLE_D_L";
+	         rendModType = physModType;
+	         break;
+         case "ncd_left_5th":
             physModType = "NEEDLE_D_L";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-          case "ncd_right_2nd":
+         case "ncd_right_2nd":
             physModType = "NEEDLE_D_R";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-          case "ncd_right_5th":
+         case "ncd_right_5th":
             physModType = "NEEDLE_D_R";
-	    rendModType = physModType;
+	         rendModType = physModType;
             break;
-	  case "ketamine_100":
+	      case "ketamine_100":
             physModType = "KETAMINE_100MG_1perc_O2";
             break;
-          case "succs_70":
+         case "succs_70":
             physModType = "SUCCINYLCHOLINE_70MG_NORMAL_ENV";
             break;
-          case "succs_140":
+         case "succs_140":
             physModType = "SUCCINYLCHOLINE_140MG_NORMAL_ENV";
             break;
-	  case "intubate_correct":
-	    physModType = "MASK_INSERT_ET_TUBE_CORRECT";
-	    rendModType = physModType;
-	    break;
-          case "intubate_ms":
+	      case "intubate_correct":
+	         physModType = "MASK_INSERT_ET_TUBE_CORRECT";
+	         rendModType = physModType;
+	         break;
+         case "intubate_ms":
             physModType = "MASK_INSERT_ET_TUBE_MS";
             rendModType = physModType;
             break;
-          case "intubate_esoph":
+         case "intubate_esoph":
             physModType = "MASK_INSERT_ET_TUBE_ESOPH";
             rendModType = physModType;
             break;
-	  case "tape_vent":
+	      case "tape_vent":
             physModType = "MASK_TAPE_VENTILATE_ET_TUBE";
             rendModType = physModType;
             break;
-          case "extubate":
+         case "extubate":
             physModType = "EXTUBATE";
             rendModType = physModType;
             break;
-        }
-	if (!toastVariant) {
-	  toastVariant = 'info';
-	}
-      	if (actionCmd) {
+      }
+      if (!toastVariant) {
+	      toastVariant = 'info';
+	   }
+      if (actionCmd) {
           var commandUrl = "command/" + actionCmd;
           this.$http
             .get(commandUrl)
           this.$bvToast.toast(actionCmd, {
                 title: `Action performed: `,
-		toaster: 'b-toaster-bottom-right',
+            	 toaster: 'b-toaster-bottom-right',
                 autoHideDelay: 5000,
                 variant: toastVariant,
                 solid: true
             })
         }
-        if (physModType) {
-          this.publishPhysiologyModification(physModType, '', '', '')
-	  this.$bvToast.toast(physModType, {
+      if (physModType) {
+         this.publishPhysiologyModification(physModType, '', '', '')
+	      this.$bvToast.toast(physModType, {
             	title: `Physiology Modification performed: `,
-		toaster: 'b-toaster-bottom-right',
+		         toaster: 'b-toaster-bottom-right',
             	autoHideDelay: 5000,
-		variant: 'danger',
+		         variant: 'danger',
             	solid: true
             })
         }

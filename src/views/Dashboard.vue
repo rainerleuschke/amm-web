@@ -26,13 +26,15 @@
             <div class="text-center">
               <b-row>
                 <b-col>
-                  <h5>{{simTime}}
-                    <br>
-                    <small>Sim Time</small>
+                  <h3 style="padding-top:10px">
+                     {{simTime}}
+                  </h3>
+                  <h5>
+                     <small>Sim Time</small>
                   </h5>
                 </b-col>
                 <b-col>
-                  <h5>
+                  <h5 style="padding-top:10px">
                     <router-link to="modules">{{modulesConnected}}</router-link>
                     <br>
                     <small>Total Modules Connected</small>
@@ -42,29 +44,39 @@
             </div>
           </b-card-content>
           <b-card-footer>
+            <div class="text-center">
             <b-row>
-              <b-col v-for="action in actionCards" :key='action.title'>
-                <button :class="action.type" v-on:click="handleActionClick(action.title)">
-                  <i :class="action.icon"></i>
-                  {{action.title}}
-                </button>
+              <b-col
+                  v-for="action in actionCards"
+                  :key='action.title'
+                  style="padding-top:5px;padding-bottom:5px"
+              >
+                <b-button block
+                  :class="action.type"
+                  v-on:click="handleActionClick(action.title)"
+                  style="height:100%"
+                >
+                  <h5 style="padding-top:10px">
+                     <i :class="action.icon"></i> &nbsp;
+                     {{action.title}}
+                  </h5>
+                </b-button>
               </b-col>
             </b-row>
+            </div>
           </b-card-footer>
         </b-card>
       </b-col>
 
-      <b-col cols="4">
+      <b-col sm="4">
           <b-col>
             <b-card bg-variant="success">
-              <h5 class="category">
+              <h3 class="category">
                   <i class="fa fa-heartbeat"></i>
-                  Heart Rate
-              </h5>
-              <h2 class="title" style="text-align:center">
-                  <div class="xxxl"><strong>
-                     {{HR}}
-                  </strong></div>
+                  <h5 style="display:inline"> &nbsp; HR</h5>
+              </h3>
+              <h2 class="title" style="text-align:center;font-size:clamp(30px, 4vw, 60px)">
+                  <strong> {{HR}} </strong>
               </h2>
 
             </b-card>
@@ -72,28 +84,24 @@
 
           <b-col>
             <b-card bg-variant="warning">
-              <h5 class="category">
-                  <i class="fa fa-lungs"></i>
-                  SpO2
-              </h5>
-              <h2 class="title" style="text-align:center">
-                  <div class="xxxl"><strong>
-                     {{SPO2}}
-                  </strong></div>
+              <h3 class="category">
+                  <i class="fa fa-hand-point-up"></i>
+                  <h5 style="display:inline"> &nbsp; SpO<sub>2</sub></h5>
+              </h3>
+              <h2 class="title" style="text-align:center;font-size:clamp(30px, 4vw, 60px)">
+                  <strong> {{SPO2}} </strong>
               </h2>
             </b-card>
           </b-col>
 
           <b-col>
             <b-card bg-variant="primary">
-              <h5 class="category">
-                  <i class="fa fa-user"></i>
-                  Breath Rate
-              </h5>
-              <h2 class="title" style="text-align:center">
-                  <div class="xxxl"><strong>
-                     {{BR}}
-                  </strong></div>
+              <h3 class="category">
+                  <i class="fa fa-lungs"></i>
+                  <h5 style="display:inline"> &nbsp; Resp</h5>
+              </h3>
+              <h2 class="title" style="text-align:center;font-size:clamp(30px, 4vw, 60px)">
+                  <strong> {{BR}} </strong>
                   <!-- <small>bpm</small> -->
               </h2>
             </b-card>
@@ -101,29 +109,20 @@
 
           <b-col>
             <b-card bg-variant="danger">
-              <h5 class="category">
+              <h3 class="category">
                   <i class="fa fa-tint"></i>
-                  Blood Pressure
-              </h5>
-              <h2 class="title" style="text-align:center">
-                  <div class="xxxl"><strong>
-                     {{SYS}} / {{DIA}}
-                  </strong></div>
+                  <h5 style="display:inline"> &nbsp; BP</h5>
+              </h3>
+              <h2 class="title" style="text-align:center;font-size:clamp(20px, 3vw, 50px)">
+                  <strong> {{SYS}} / {{DIA}} </strong>
               </h2>
             </b-card>
           </b-col>
-
       </b-col>
     </b-row>
 
   </div>
 </template>
-
-<style>
-   div.xxxl {
-      font-size: 150%;
-   }
-</style>
 
 <script>
 
@@ -169,7 +168,7 @@
           },
           {
             type: "btn btn-danger",
-            icon: "fa fa-refresh",
+            icon: "fas fa-redo-alt",
             title: "Reset"
           },
           {
@@ -200,6 +199,7 @@
       },
       handleActionClick(command) {
         var actionCmd;
+        var toastVariant;
         switch (command.toLowerCase()) {
           case "start":
             actionCmd = "[SYS]START_SIM";
@@ -209,6 +209,7 @@
               }.bind(this),
               1500
             );
+            toastVariant = 'success';
             break;
           case "stop":
             actionCmd = "[SYS]STOP_SIM";
@@ -219,6 +220,7 @@
               }.bind(this),
               5000
             );
+            toastVariant = 'danger';
             break;
           case "pause":
             actionCmd = "[SYS]PAUSE_SIM";
@@ -230,6 +232,7 @@
               }.bind(this),
               3000
             );
+            toastVariant = 'warning';
             break;
           case "reset":
             actionCmd = "[SYS]RESET_SIM";
@@ -253,31 +256,29 @@
               }.bind(this),
               5000
             );
+            toastVariant = 'danger';
             break;
           case "save":
             actionCmd = "[SYS]SAVE_STATE";
             break;
           default:
             break;
-        }
-
-        if (actionCmd) {
-          var commandUrl = "command/" + actionCmd;
-          this.$http
-            .get(commandUrl)
-            .then(response => {
-              this.$notify({
-                message: "Action performed: " + command,
-                icon: "play_arrow",
-                horizontalAlign: "center",
-                verticalAlign: "top",
-                type: "info"
-              });
+         }
+         if (!toastVariant) {
+            toastVariant = 'info';
+         }
+         if (actionCmd) {
+            var commandUrl = "command/" + actionCmd;
+            this.$http
+               .get(commandUrl)
+            this.$bvToast.toast(actionCmd, {
+                title: `Action performed: `,
+                toaster: 'b-toaster-bottom-right',
+                autoHideDelay: 5000,
+                variant: toastVariant,
+                solid: true
             })
-            .catch(e => {
-              // this.errors.push(e)
-            });
-        }
+         }
       },
       loadNodeData() {
         this.$http.get(`nodes`).then(
